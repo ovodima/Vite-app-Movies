@@ -7,7 +7,7 @@ import Links from "../constans/links";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className={styles.marginY}>
       <Recomendation className="sm: hidden mx-4" />
 
       <Movies link={Links.all} />

@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import MoviesLayot from "./MoviesLayot";
 import Loading from "./Loading";
+
 import Slider from "react-slick";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { moviesState } from "../constans/state";
+import { moviesDetails, moviesState } from "../constans/state";
 import fetchMovies from "./Api";
+import Links from "../constans/links";
+import { Link } from "react-router-dom";
 
 const settings = {
   className: "center",
   centerMode: true,
   infinite: true,
   centerPadding: "40px",
-  slidesToShow: 3,
+  slidesToShow: 4,
   speed: 600,
 };
 
@@ -20,8 +23,13 @@ const Movies = (props) => {
 
   const [movies, setMovies] = useRecoilState(moviesState);
   const moviesValue = useRecoilValue(moviesState);
+  const [, setMoviesDetails] = useRecoilState(moviesDetails);
 
   const [loading, setLoading] = useState(true);
+
+  const setMovieDetail = (movie) => {
+    setMovieDetail(movie);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +46,6 @@ const Movies = (props) => {
     fetchData();
   }, []);
 
-
   if (loading) {
     return <Loading />;
   }
@@ -46,15 +53,16 @@ const Movies = (props) => {
   return (
     <Slider {...settings}>
       {moviesValue.results.map((item) => (
-        <MoviesLayot
-          key={item.id}
-          id={item.id}
-          poster_path={item.poster_path}
-
-
-          release_date={item.release_date}
-          title={item.title}
-        />
+        <div key={item.id} className="my-8 mx-8 p-1">
+          
+            <Link
+              to={`/movie/${item.id}`}
+              onClick={() => setMoviesDetails(item)}
+            >
+              <img src={Links.imgPath + item.poster_path} alt="Sorry, but film maker dont give image" height={500}/>
+            </Link>
+          
+        </div>
       ))}
     </Slider>
   );

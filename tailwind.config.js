@@ -21,7 +21,10 @@ export default {
         purpleColor: "#473E66",
         roseColor: "#BD83B8",
         nudeColor:'#F5D7BD',
-        orangeColor: '#F1916D'
+        orangeColor: '#F1916D',
+        voteGreen:'#1eed07',
+        voteRed:'#f00a0a',
+        voteYellow:'#d3f205',
       },
 
       fontFamily: {
