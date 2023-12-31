@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { moviesDetails } from "../constans/state";
 import Links from "../constans/links";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faThumbsUp, faStar, faCalendar} from '@fortawesome/free-solid-svg-icons'
+import {faThumbsUp, faStar, faCalendar, faThumbsDown} from '@fortawesome/free-solid-svg-icons'
 
 const like = <FontAwesomeIcon icon={faThumbsUp} />
 const star = <FontAwesomeIcon icon={faStar} />
 const calendar = <FontAwesomeIcon icon={faCalendar} />
+const dislike = <FontAwesomeIcon icon={faThumbsDown} />
 
 const MoviesDetail = () => {
   const [selectMovies, setSelectMovies] = useRecoilState(moviesDetails);
-
   const {vote_average, vote_count,release_date,original_language, backdrop_path, poster_path, title, overview } = selectMovies
-  console.log(selectMovies);
+
+  const [likes, setLike] = useState(vote_count)
+  const [check, setCheck] = useState(false)
+
+
+  const hadleLike = () => {
+    if(!check) {
+      setLike(likes + 1)
+    } else {
+      setLike(likes - 1)
+    }
+    setCheck(!check)
+  }
+
+  
 
   const voteRate = (vote) => {
     if (vote >= 8) {
@@ -42,7 +56,7 @@ const MoviesDetail = () => {
         <div className=" w-full  flex items-center justify-between my-4">
             <span className={`p-1 rounded-md font-semibold ${voteRate(vote_average)}`}>{star} {vote_average}</span>
             <span className="mx-4 bg-orangeColor p-2 rounded-md text-secondaryColor font-bold">{calendar} {release_date}</span>
-            <span className="bg-orangeColor p-2 rounded-xl cursor-pointer font-semibold"> {like} {vote_count}</span>
+            <span className="bg-orangeColor p-2 m-2 rounded-xl cursor-pointer font-semibold" onClick={hadleLike}> {!check ?like:dislike} {likes}</span>
         </div>
       <p className="font-sans text-orangeColor text-xl my-2 mx-4 font-bold">{overview}</p>
     </div>
