@@ -4,7 +4,7 @@ import Loading from "./Loading";
 
 import Slider from "react-slick";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { moviesDetails, moviesState } from "../constans/state";
+import { moviesDetails, tvShowState } from "../constans/state";
 import fetchMovies from "./Api";
 import Links from "../constans/links";
 import { Link } from "react-router-dom";
@@ -14,17 +14,15 @@ const settings = {
   centerMode: true,
   infinite: true,
   centerPadding: "40px",
-  rows:2,
-  slidesToShow: 5,
-  swipeToSlide: true,
+  slidesToShow: 4,
   speed: 600,
 };
 
-const Movies = (props) => {
+const TVShow = (props) => {
   const { link } = props;
 
-  const [movies, setMovies] = useRecoilState(moviesState);
-  const moviesValue = useRecoilValue(moviesState);
+  const [movies, setMovies] = useRecoilState(tvShowState);
+  const moviesValue = useRecoilValue(tvShowState);
   const [, setMoviesDetails] = useRecoilState(moviesDetails);
 
   const [loading, setLoading] = useState(true);
@@ -72,4 +70,4 @@ const Movies = (props) => {
   );
 };
 
-export default Movies;
+export default TVShow;
