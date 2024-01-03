@@ -9,19 +9,11 @@ import fetchMovies from "./Api";
 import Links from "../constans/links";
 import { Link } from "react-router-dom";
 
-const settings = {
-  className: "center",
-  centerMode: true,
-  infinite: true,
-  centerPadding: "40px",
-  rows:2,
-  slidesToShow: 5,
-  swipeToSlide: true,
-  speed: 600,
-};
+
+
 
 const Movies = (props) => {
-  const { link } = props;
+  const { link, params } = props;
 
   const [movies, setMovies] = useRecoilState(moviesState);
   const moviesValue = useRecoilValue(moviesState);
@@ -53,7 +45,7 @@ const Movies = (props) => {
   }
 
   return (
-    <Slider {...settings}>
+    <Slider {...params}>
       {moviesValue.results.map((item) => (
         <div key={item.id} className="my-8 mx-8 p-1">
           <Link to={`/movie/${item.id}`} onClick={() => setMoviesDetails(item)}>

@@ -14,3 +14,20 @@ canvas {
     overflow: hidden;
     z-index: -10;
 }
+
+@layer base {
+    body {
+        @apply bg-gradient-to-r from-backgroundColor via-orangeColor to-secondary
+    }
+    h2 { 
+        @apply text-lg font-sans font-bold text-orangeColor uppercase
+    }
+
+    li {
+        @apply text-secondary
+    }
+
+    p {
+        @apply text-white text-center
+    }
+}

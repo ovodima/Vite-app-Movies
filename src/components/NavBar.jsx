@@ -16,7 +16,7 @@ const NavBar = () => {
   const [toggle, setToggle] = useState(false);
   return (
     <BrowserRouter>
-      <section>
+      <section className=" w-full py-2 px-2">
         <nav className="w-full flex py-4 justify-between items-center navbar z-10">
           <h1 className="text-[16px] text-orangeColor xs: font-bold font-mono text-uppercase">
             Movies App

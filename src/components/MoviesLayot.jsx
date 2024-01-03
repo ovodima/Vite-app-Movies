@@ -1,36 +1,58 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState} from "react";
+
+import Loading from "./Loading";
+
+import Slider from "react-slick";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { moviesDetails, moviesState } from "../constans/state";
+
 import Links from "../constans/links";
-import { moviesDetails } from "../constans/state";
-import { useRecoilState } from "recoil";
+import { Link } from "react-router-dom";
 
 
-export default function MoviesLayot(props) {
-  const { title, id, poster_path, release_date, handleClick, routePath
-  } = props;
+
+
+const MoviesLayot = (props) => {
+  const {  params, searchResults } = props;
+
+  const [movies, setMovies] = useRecoilState(moviesState);
+  const moviesValue = useRecoilValue(moviesState);
+  const [, setMoviesDetails] = useRecoilState(moviesDetails);
 
   
 
+  const setMovieDetail = (movie) => {
+    setMovieDetail(movie);
+  };
+
   
+ 
+
+
 
   return (
-    <div className="my-2">
-      <div className="bg-orangeColor p-6 rounded-lg shadow-md m-4 max-w-md">
-        <Link to={routePath} onClick={() => handleClick} className="block mb-4">
-          <img
-            src={Links.imgPath + poster_path}
-            srcSet={Links.imgPath + poster_path}
-            width={400}
-            height={400}
-            alt={title}
-            className=" rounded-md object-cover"
-          />
-        </Link>
-        <div className="flex flex-col items-center mx-5">
-          <h1 className="text-xl font-bold text-nudeColor">{title}</h1>
-          <h2 className="text-white">{release_date}</h2>
+    <>
+    {
+      !searchResults && searchResults.lenght > 0 ? <Loading /> : <Slider {...params}>
+      {searchResults.map((item) => (
+        <div key={item.id} className="my-8 mx-8 p-1">
+          <Link to={`/movie/${item.id}`} onClick={() => setMoviesDetails(item)}>
+            <div className="relative h-45 overflow-hidden">
+            <img
+              src={Links.imgPath + item.poster_path}
+              alt="Sorry, but film maker dont give image"
+              className="w-full h-full object- rounded-xl"
+            />
+            </div>
+
+          </Link>
         </div>
-      </div>
-    </div>
+      ))}
+    </Slider>
+    }
+  </>
+    
   );
-}
+};
+
+export default MoviesLayot;

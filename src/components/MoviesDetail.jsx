@@ -9,6 +9,9 @@ import {
   faCalendar,
   faThumbsDown,
 } from "@fortawesome/free-solid-svg-icons";
+import Movies from "./Movies";
+import settingsSlider from "../constans/params";
+
 
 const like = <FontAwesomeIcon icon={faThumbsUp} />;
 const star = <FontAwesomeIcon icon={faStar} />;
@@ -78,9 +81,13 @@ const MoviesDetail = () => {
           {!check ? like : dislike} {likes}
         </span>
       </div>
-      <p className="font-sans text-orangeColor text-xl my-2 mx-4 font-bold">
+      <p className="font-sans  text-xl my-2 mx-4 font-bold">
         {overview}
       </p>
+    <div>
+    
+    </div>
+      
     </div>
   );
 };

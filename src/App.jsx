@@ -4,8 +4,9 @@ import "./index.css";
 
 function App() {
   return (
-    <div className="bg-backgroundColor w-full h-full overflow-hidden">
-      <div >
+    <div className=" w-full h-full bg-gradient-to-r from-backgroundColor via-orangeColor to-secondary">
+
+      <div>
         <div className={styles.paddingX}>
           <NavBar />
         </div>
