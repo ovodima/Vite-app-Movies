@@ -17,6 +17,8 @@ const styles = {
   
   export const layout = {
     section: `flex md:flex-row flex-col ${styles.paddingY}`,
+    imgSection: "w-full xl:h-[750px] lg:h-[700px] md:h-[600px] sm:h-[500px] ss:h-[500px]",
+    slider:"m-4 p-8 overflow-hidden w-full flex flex-col shadow-xl justify-center rounded-lg border-y-4 border-nudeColor divide-state-900",
     sectionReverse: `flex md:flex-row flex-col-reverse ${styles.paddingY}`,
   
     sectionImgReverse: `flex-1 flex ${styles.flexCenter} md:mr-10 mr-0 md:mt-0 mt-10 relative`,

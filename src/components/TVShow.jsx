@@ -8,6 +8,8 @@ import { moviesDetails, tvShowState } from "../constans/state";
 import fetchMovies from "./Api";
 import Links from "../constans/links";
 import { Link } from "react-router-dom";
+import { layer } from "@fortawesome/fontawesome-svg-core";
+import { layout } from "../constans/styles";
 
 
 
@@ -47,12 +49,12 @@ const TVShow = (props) => {
   return (
     <Slider {...params}>
       {moviesValue.results.map((item) => (
-        <div key={item.id} className="my-8 mx-8 p-1">
+        <div key={item.id} className={layout.imgSection}>
           <Link to={`/movie/${item.id}`} onClick={() => setMoviesDetails(item)}>
-            <div className="relative h-45 overflow-hidden">
+            <div className={layout.imgSection}>
             <img
               src={Links.imgPath + item.poster_path}
-              alt="Sorry, but film maker dont give image"
+              alt={item.title}
               className="w-full h-full object- rounded-xl"
             />
             </div>

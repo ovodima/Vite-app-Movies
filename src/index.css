@@ -17,7 +17,10 @@ canvas {
 
 @layer base {
     body {
-        @apply bg-gradient-to-r from-backgroundColor via-orangeColor to-secondary
+        @apply bg-gradient-to-r from-backgroundColor via-purpleColor to-secondary
+    }
+    title {
+        @apply uppercase
     }
     h2 { 
         @apply text-lg font-sans font-bold text-orangeColor uppercase
@@ -28,6 +31,6 @@ canvas {
     }
 
     p {
-        @apply text-white text-center
+        @apply text-white text-center 
     }
 }

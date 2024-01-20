@@ -14,3 +14,8 @@ export const moviesDetails = atom({
   key: "moviesDetail",
   default: [],
 });
+
+// export const moviesImages = atom({
+//   key: "movieImages",
+//   default: [],
+// });

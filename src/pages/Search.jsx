@@ -43,8 +43,8 @@ const Search = () => {
   return (
     <section className="py-8 w-full h-full">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-4 text-secondary">Search movies</h2>
-        <div className="">
+        <h2 className="text-3xl font-bold mb-4 text-nudeColor">Search movies</h2>
+        <div className="mx-4">
           <input
             type="text"
             placeholder="Searching"
@@ -56,7 +56,7 @@ const Search = () => {
 
         <button
           onClick={handleSearch}
-          className="mt-2 bg-secondary hover:bg-purpleColor text-orangeColor font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline-roseColor"
+          className="mt-2 bg-secondary hover:bg-backgroundColor text-nudeColor font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline-roseColor"
         >
           Search
         </button>
@@ -69,7 +69,7 @@ const Search = () => {
       {data.length > 0 ? (
         <MoviesLayot params={settingsSlider} searchResults={data} />
       ) : (
-        !loading && <p className="uppercase font-mono my-4 font-semibold text-secondary">No results found</p>
+        !loading && <p className="uppercase font-mono my-4 font-semibold text-nudeCoolor">No results found</p>
       )}
     </section>
   );

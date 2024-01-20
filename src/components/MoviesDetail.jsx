@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { moviesDetails } from "../constans/state";
+
 import Links from "../constans/links";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,8 +10,7 @@ import {
   faCalendar,
   faThumbsDown,
 } from "@fortawesome/free-solid-svg-icons";
-import Movies from "./Movies";
-import settingsSlider from "../constans/params";
+import styles, { layout } from "../constans/styles";
 
 
 const like = <FontAwesomeIcon icon={faThumbsUp} />;
@@ -54,11 +54,11 @@ const MoviesDetail = () => {
   };
 
   return (
-    <div className="flex flex-col items-center mx-4 my-4 ">
+    <div className="flex flex-col items-center mx-2 my-4 w-full">
       <img
         src={Links.imgPath + backdrop_path}
         // srcSet={Links.imgPath + poster_path}
-        alt="Sorry, but film maker dont give image"
+        alt={title}
         className="w-full rounded-xl"
       />
       <h2 className=" text-nudeColor hover:text-orangeColor font-sans subpixel-antialiased text-xl font-bold">
@@ -68,7 +68,7 @@ const MoviesDetail = () => {
         <span
           className={`p-1 rounded-md font-semibold ${voteRate(vote_average)}`}
         >
-          {star} {vote_average}
+          {star} {vote_average.toFixed(1)}
         </span>
         <span className="mx-4 bg-orangeColor p-2 rounded-md text-secondaryColor font-bold">
           {calendar} {release_date}
@@ -81,12 +81,10 @@ const MoviesDetail = () => {
           {!check ? like : dislike} {likes}
         </span>
       </div>
-      <p className="font-sans  text-xl my-2 mx-4 font-bold">
+      <p className={layout.sectionInfo}>
         {overview}
       </p>
-    <div>
     
-    </div>
       
     </div>
   );

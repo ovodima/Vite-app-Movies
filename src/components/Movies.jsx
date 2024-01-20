@@ -8,6 +8,7 @@ import { moviesDetails, moviesState } from "../constans/state";
 import fetchMovies from "./Api";
 import Links from "../constans/links";
 import { Link } from "react-router-dom";
+import { layout } from "../constans/styles";
 
 
 
@@ -47,13 +48,13 @@ const Movies = (props) => {
   return (
     <Slider {...params}>
       {moviesValue.results.map((item) => (
-        <div key={item.id} className="my-8 mx-8 p-1">
+        <div key={item.id} className={layout.imgSection}>
           <Link to={`/movie/${item.id}`} onClick={() => setMoviesDetails(item)}>
-            <div className="relative h-45 overflow-hidden">
+            <div className=" overflow-hidden w-full h-full p-1">
             <img
               src={Links.imgPath + item.poster_path}
-              alt="Sorry, but film maker dont give image"
-              className="w-full h-full object- rounded-xl"
+              alt={item.title}
+              className="w-full h-full rounded-md"
             />
             </div>
 

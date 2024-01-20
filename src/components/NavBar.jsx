@@ -16,17 +16,17 @@ const NavBar = () => {
   const [toggle, setToggle] = useState(false);
   return (
     <BrowserRouter>
-      <section className=" w-full py-2 px-2">
-        <nav className="w-full flex py-4 justify-between items-center navbar z-10">
-          <h1 className="text-[16px] text-orangeColor xs: font-bold font-mono text-uppercase">
+      <section className="h-40  rounded-lg p-4  ">
+        <nav className="w-full flex justify-between items-center shadow-xl shadow-roseColor hover:shadow-orangeColor rounded-xl z-10 p-4">
+          <h1 className="text-[16px] text-orangeColor font-semibold xs:font-bold font-mono uppercase">
             Movies App
           </h1>
           <ul className='className="list-none sm:flex hidden justify-end items-center flex-1"'>
             {navLinks.map((nav, i) => (
               <li
                 key={nav.id}
-                className={` text-transform: uppercase font-mono font-normal cursor-pointer text-[16px] ${
-                  active === nav.title ? "text-purpleColor" : "text-orangeColor"
+                className={` uppercase font-mono font-normal cursor-pointer text-[16px] ${
+                  active === nav.title ? "text-roseColor" : "text-orangeColor"
                 } ${i === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
                 onClick={() => setActive(nav.title)}
               >
@@ -55,9 +55,9 @@ const NavBar = () => {
               {navLinks.map((nav, i) => (
                 <li
                   key={nav.id}
-                  className={`text-transform:uppercase  font-bold font-mono cursor-pointer text-[24px] my-1  ${
+                  className={`uppercase  font-bold font-mono cursor-pointer text-[24px] my-1  ${
                     active === nav.title
-                      ? "text-purpleColor"
+                      ? "text-roseColor"
                       : "text-orangeColor"
                   }`}
                 >
