@@ -71,7 +71,7 @@ const NavBar = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/popular" element={<Popular />} />
-        <Route path="/recomendation" element={<Recomendation />} />
+        
         <Route path="/form" element={<Form />} />
         <Route path="/search" element={<Search />} />
         <Route path="/movie/:id" element={<MoviesDetail />} />

@@ -6,7 +6,7 @@ export const moviesState = atom({
 });
 
 export const tvShowState = atom({
-  key: "tvShow",
+  key: "tvShowState",
   default: [],
 });
 
@@ -15,7 +15,12 @@ export const moviesDetails = atom({
   default: [],
 });
 
-// export const moviesImages = atom({
-//   key: "movieImages",
-//   default: [],
-// });
+export const itemId = atom({
+  key: "itemId",
+  default: [],
+});
+
+export const imageData = atom({
+  key: "imageData",
+  default: [],
+});
