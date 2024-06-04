@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 
 import Links from "../constans/links";
-import settingsSlider from "../constans/params";
+import settingsSlider, { detailSlider } from "../constans/params";
 import Header from "../components/Header";
 import MovieLayot from "../components/MovieLayot";
 
 const Home = () => {
   const [page, setPage] = useState(1);
-  console.log(page);
+  
   return (
     <>
-      <Header />
+      
+        <Header/>
+        
       <div>
         <div className="">
           <MovieLayot
-            movieLink={Links.tvShowToday + page}
+            movieLink={Links.topWeek + page}
             tvshowLink={Links.tvShowInAir + page}
             sliderParams={settingsSlider}
-            firstHeader="Show Today"
+            firstHeader="Top of the week"
             secondHeader="Best Today TVShow in the World"
           />
         </div>

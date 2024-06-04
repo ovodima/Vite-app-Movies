@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { close, menu } from "../assets";
 import { navLinks } from "../constans/NavLink";
 
-import Recomendation from "../pages/Recomendation";
+
 import Popular from "../pages/Popular";
 import Form from "../pages/Form";
 
@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "../pages/Home";
 import Search from "../pages/Search";
 import MoviesDetail from "./MoviesDetail";
+
 
 const NavBar = () => {
   const [active, setActive] = useState("Home");
@@ -56,9 +57,7 @@ const NavBar = () => {
                 <li
                   key={nav.id}
                   className={`uppercase  font-bold font-mono cursor-pointer text-[24px] my-1  ${
-                    active === nav.title
-                      ? "text-roseColor"
-                      : "text-orangeColor"
+                    active === nav.title ? "text-roseColor" : "text-orangeColor"
                   }`}
                 >
                   <Link to={nav.id === "home" ? "/" : nav.id}>{nav.title}</Link>
@@ -68,13 +67,15 @@ const NavBar = () => {
           </div>
         </nav>
       </section>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/popular" element={<Popular />} />
-        
+
         <Route path="/form" element={<Form />} />
         <Route path="/search" element={<Search />} />
         <Route path="/movie/:id" element={<MoviesDetail />} />
+        <Route path="/recomendation/:id" element={<MoviesDetail />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { imageData, itemId, moviesDetails } from "../constans/state";
+import { itemId, moviesDetails, recommendations } from "../constans/state";
+detailSlider
 
 import Links from "../constans/links";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,8 +11,8 @@ import {
   faCalendar,
   faThumbsDown,
 } from "@fortawesome/free-solid-svg-icons";
-
-
+import Recomendation from "../pages/Recomendation";
+import { detailSlider } from "../constans/params";
 
 const like = <FontAwesomeIcon icon={faThumbsUp} />;
 const star = <FontAwesomeIcon icon={faStar} />;
@@ -21,6 +22,7 @@ const dislike = <FontAwesomeIcon icon={faThumbsDown} />;
 const MoviesDetail = () => {
   const [selectMovies, setSelectMovies] = useRecoilState(moviesDetails);
   const {
+    id,
     vote_average,
     vote_count,
     release_date,
@@ -31,8 +33,7 @@ const MoviesDetail = () => {
     overview,
   } = selectMovies;
 
- 
- 
+  
 
   const [likes, setLike] = useState(vote_count);
   const [check, setCheck] = useState(false);
@@ -55,44 +56,14 @@ const MoviesDetail = () => {
       return "bg-voteRed";
     }
   };
-  const id = useRecoilValue(itemId);
-  console.log(id)
 
-  useEffect(() => {
-    
-    const fetchImg = async (id) => {
-      const url = `https://api.themoviedb.org/3/movie/${id}/images?include_image_language=en`;
-      const options = {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNjBmMzQ3ZGNjNzU4MmEzNGFhN2NjYmVjZDQ1ZGExNiIsInN1YiI6IjYxZmU1NWIzYmU2ZDg4MDAxYmIwZWU5YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gh3mzOznXDajgNrJIREaQq21Q6KX0eLx4ny2i74mlgc",
-        },
-      };
-  
-      try {
-        const images = await fetch(url, options);
-        const res = await images.json();
-        console.log(res)
-        // setImageData(res)
-      } catch (error) {
-        console.error("Error fetching data: img", error);
-      }
-    };
+ 
 
-    
-  fetchImg(id)
   
-    
-  }, [])
-  
-
   return (
     <div className="flex flex-col items-center mx-2 my-4 w-full">
       <img
         src={Links.imgPath + backdrop_path}
-        // srcSet={Links.imgPath + poster_path}
         alt={title}
         className="w-full rounded-xl"
       />
@@ -116,11 +87,11 @@ const MoviesDetail = () => {
           {!check ? like : dislike} {likes}
         </span>
       </div>
-      <p className=''>
-        {overview}
-      </p>
-    
-      
+      <p className="">{overview}</p>
+      <div>
+        
+      <Recomendation  id={id} firstHeader='Recomendation'/>
+      </div>
     </div>
   );
 };

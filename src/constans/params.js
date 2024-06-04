@@ -10,14 +10,11 @@ const settingsSlider = {
     
 }
 export const detailSlider = {
-    
-        className: "center",
-        centerMode: true,
+        dots: true,
         infinite: true,
-        centerPadding: "20px",
-        slidesToShow: 6,
-        swipeToSlide: true,
-        speed: 600,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1
     
 }
 

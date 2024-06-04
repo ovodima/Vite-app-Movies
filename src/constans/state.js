@@ -24,3 +24,7 @@ export const imageData = atom({
   key: "imageData",
   default: [],
 });
+export const recommendations = atom({
+  key: "recommendations",
+  default: [],
+});
